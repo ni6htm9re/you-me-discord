@@ -1,53 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>YouTube Loop Click-to-Unmute</title>
+<meta charset="UTF-8">
+<title>Loop YouTube Video</title>
 <style>
-  html, body { margin:0; width:100%; height:100%; overflow:hidden; background:black; }
-  #player { width:100%; height:100%; }
-  #hint {
-    position:absolute; inset:0; display:flex;
-    justify-content:center; align-items:center;
-    color:white; font-size:22px; background:rgba(0,0,0,0.35);
-    pointer-events:none;
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 </style>
 </head>
 <body>
 
-<div id="player"></div>
-<div id="hint">Click to unmute</div>
-
-<script src="https://www.youtube.com/iframe_api"></script>
-<script>
-  let player;
-  const hint = document.getElementById("hint");
-
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      videoId: '3at_m1J1O4I',
-      playerVars: {
-        autoplay: 1,
-        mute: 1,
-        loop: 1,
-        playlist: '3at_m1J1O4I',
-        controls: 0,
-        modestbranding: 1,
-        enablejsapi: 1
-      },
-      events: {
-        onReady: () => {
-          // Now the player is ready
-          document.addEventListener('click', () => {
-            player.unMute();
-            hint.remove();
-          }, { once: true }); // only first click
-        }
-      }
-    });
-  }
-</script>
+<iframe 
+  src="https://www.youtube.com/embed/3at_m1J1O4I?autoplay=1&mute=1&loop=1&playlist=3at_m1J1O4I&controls=0&modestbranding=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
 
 </body>
 </html>
